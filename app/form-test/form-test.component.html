@@ -1,0 +1,14 @@
+<p>
+  form-test works!
+</p>
+1. AutoComplete Form
+<form class="test-form">
+  <mat-form-field class="test-display">
+    <input type="text"  placeholder="Friend's name" aria-label="NameCode" matInput [formControl] = "myControl" [matAutocomplete] = "auto">
+    <mat-autocomplete #auto = "matAutocomplete">
+      <mat-option *ngFor = "let name of names" [value]="name.value">
+          {{name.display}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
