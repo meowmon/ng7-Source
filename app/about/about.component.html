@@ -1,3 +1,58 @@
-<p>
-  about works!
-</p>
+<h3>Pirate Team Members:</h3>
+<form [formGroup]="newPlayerForm" (ngSubmit)="add()">
+    <label>Name:
+      <input type = "text" formControlName="name" placeholder="name"/>
+    </label>
+    <label>Age:
+        <input type = "text" placeholder="age" formControlName ="age"/>
+      </label>
+    <button type="submit">Add</button>
+    </form>
+<form>
+  <table>
+    <tr>
+      <td class="id">
+        <strong>Id</strong>
+      </td>
+      <td class="name">
+          <strong>Name</strong>
+      </td>
+      <td class="age">
+          <strong>Age</strong>
+      </td>
+      <td> Delete</td>
+    </tr>
+
+    <tr *ngFor="let player of players" (click)="Clicked(player)">
+      <td [ngClass]="{
+        'id': true,
+        'selected' : player === chosenOne 
+      
+      }">{{player.id}}</td>
+      <td [ngClass]="{
+        'name': true,
+        'selected' : player === chosenOne 
+      
+      }">{{player.name}}</td>
+      <td [ngClass]="{
+        'age': true,
+        'selected' : player === chosenOne 
+      
+      }">{{player.age}}</td>
+      <td style="width:100px"><button (click)="Delete(player)">Delete</button></td>
+    </tr>
+  </table>
+  <div *ngIf="gothim">
+  <strong>
+    The chosen one is: {{chosenOne.name | uppercase}}
+  </strong>
+  <form>Wanna update info?
+      <label>Name:
+        <input [(ngModel)]="chosenOne.name" placeholder="name" name="name"/>
+      </label>
+      <label>Age:
+          <input [(ngModel)]="chosenOne.age" placeholder="age" name ="age"/>
+        </label>
+      </form>
+  </div>
+</form>

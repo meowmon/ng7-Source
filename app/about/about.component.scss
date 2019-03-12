@@ -1,0 +1,22 @@
+form{
+    table{
+        border: 2px solid;
+        tr{
+            border: 1px solid;
+            .id{
+                border-right: 1px dashed;
+                width: 50px;
+            }
+            .name{
+                border-right: 1px dotted;
+                width: 350px;
+            }
+            .age{
+                width: 50px;
+            }
+            .selected{
+                background-color: aqua;
+            }
+        }
+    }
+}

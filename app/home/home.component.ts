@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  firstClick() {
+  Click() {
     console.log('clicked');
     this.h1Style = !this.h1Style;
     this.data.firstClick();

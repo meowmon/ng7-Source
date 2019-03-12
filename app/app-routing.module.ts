@@ -3,12 +3,16 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+import { FormTestComponent } from './form-test/form-test.component';
+import { LoginComponent} from './login/login.component';
 
 
 const routes: Routes = [ //set component route
   { path: '', component: HomeComponent},
   { path: 'about', component: AboutComponent},
-  { path: 'contact', component: ContactComponent}
+  { path: 'contact', component: ContactComponent},
+  { path: 'formTest', component: FormTestComponent},
+  { path: 'login', component: LoginComponent}
 ];
 
 @NgModule({

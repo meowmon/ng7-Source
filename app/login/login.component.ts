@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 
 @Component({
@@ -9,7 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
-
+  showRegister= false;
   constructor(private formBuilder:FormBuilder)
   { }
 
@@ -23,13 +23,12 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    this.showRegister=true;
     console.log("Loged by Username:"+this.form.username.value+" and password: "+this.form.password.value);
 
 
     if (this.loginForm.invalid) {
         return;
     }
-
-    this.success = true;
-}
+  }
 }

@@ -17,11 +17,11 @@
       <textarea formControlName="password" class="form-control"></textarea>
       <div *ngIf="submitted && loginForm.controls.password.errors" class="error">
         <div *ngIf="loginForm.controls.password.errors.required">A password is required</div>
-      </div>
+      </div>  
     </label>
     <br>
     <input type="submit" value="login" class="btn-btn-primary">
-    <a [routerLink]="['/register']" class="btn btn-link">Register</a>
+    <span *ngIf="showRegister"> <a [routerLink]="['/register']" class="btn btn-link">Register</a></span>
   
   </form>
 </div>
