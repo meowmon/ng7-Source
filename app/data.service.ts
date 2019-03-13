@@ -9,7 +9,10 @@ export class DataService {
   firstClick(){
     return console.log('clicked');
   }
-  getUsers(){
-    return this.http.get('https://reqres.in/api/users')
+  getUsers(page: number){
+    return this.http.get('https://reqres.in/api/users?page='+page)
+  }
+  getSingleUser(id : number){
+    return this.http.get('https://reqres.in/api/users/'+id)
   }
 }

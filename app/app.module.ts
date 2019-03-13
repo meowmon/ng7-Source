@@ -15,6 +15,7 @@ import { from } from 'rxjs';
 import { FormTestComponent } from './form-test/form-test.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { DetailComponent } from './detail/detail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +26,7 @@ import { RegisterComponent } from './register/register.component';
     FormTestComponent,
     LoginComponent,
     RegisterComponent,
+    DetailComponent,
   ],
   imports: [
     BrowserModule,
