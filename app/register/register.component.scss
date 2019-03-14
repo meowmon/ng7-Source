@@ -1,0 +1,32 @@
+div.name{
+    label{
+
+        width: 40%;
+        .form-control{
+            display: inline;
+        }
+    }
+}
+div.username{
+    label{
+
+        width: 400px;
+        .form-control{
+            display: inline;
+        }
+    }
+}
+div.password{
+    label{
+        width: 400px;
+    }
+}
+.registerForm{
+    border-radius: 5px;
+    background-color: #ffffff;
+    padding: 20px;
+    height: 630px;
+    width: 730px;
+    margin: auto;
+    border-style: outset;
+}

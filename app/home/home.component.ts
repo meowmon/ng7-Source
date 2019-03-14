@@ -11,12 +11,11 @@ export class HomeComponent implements OnInit {
 
   h1Style: boolean = false;
   ngOnInit() {
-    // this.data.getUsers(this.page).subscribe(page => {
-    //   this.pages = page;
-    //   console.log(this.users);
-    // })
+    this.data.getUsers(1).subscribe(data => {
+    this.max_pages = data;
+    })
   }
-  
+  max_pages:Object;
   pages: number[] = [1,2,3,4];
   chosenPage=1;
   showPage(page: number){

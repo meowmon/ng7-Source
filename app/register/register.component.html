@@ -1,3 +1,53 @@
-<p>
-  register works!
-</p>
+<div class="registerForm">
+  <form [formGroup]="accountForm" (ngSubmit)="accountSubmit()">
+    <h2 style="text-align: center"> Register Form </h2>
+    <div class="name">
+        <label>
+          <span> Firstname:</span>
+            <input type="text" formControlName="firstName" class="form-control">
+            <div *ngIf="submitted && accountForm.controls.firstName.errors" class="error">
+              <div *ngIf="accountForm.controls.firstName.errors.required">Your firstName is required</div>
+            </div>
+        </label>
+        
+        <label style="margin-left:30px">
+            <span>Lastname:</span>  
+            <input type ="text" formControlName="lastName" class="form-control" >
+            <div *ngIf="submitted && accountForm.controls.lastName.errors" class="error">
+              <div *ngIf="accountForm.controls.lastName.errors.required">A lastName is required</div>
+            </div>  
+        </label>
+    </div>
+    <div class="username">
+        <label>
+          <span> Username:</span>
+            <input type="text" formControlName="userName" class="form-control">
+            <div *ngIf="submitted && accountForm.controls.userName.errors" class="error">
+              <div *ngIf="accountForm.controls.userName.errors.required">Your Username is required</div>
+            </div>
+          </label>
+    </div>
+    <div class="password">
+        <label>
+          <span> Password:</span>
+            <input type="password" formControlName="password" class="form-control">
+            <div *ngIf="submitted && accountForm.controls.password.errors" class="error">
+              <div *ngIf="accountForm.controls.password.errors.required">You need a password</div>
+            </div>
+          </label>
+          <br>
+          <label>
+              <span> Confirm Password:</span>
+                <input type="password" formControlName="cfpassword" class="form-control">
+                <div *ngIf="submitted && (accountForm.controls.password.value !==  accountForm.controls.cfpassword.value)" class="error">
+                  <div *ngIf="accountForm.controls.cfpassword.errors.required">Confirm password missmatch password</div>
+                </div>
+              </label>
+    </div>
+    <input type="submit" value="register" class="btn-btn-primary">
+
+  </form>
+  <!-- <form [formGroup]="infoForm" [style.display]=" accountSubmited ? 'block' : 'none' " (ngSubmit)="infoSubmit()">
+    
+  </form> -->
+</div>

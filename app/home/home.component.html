@@ -21,12 +21,16 @@
 <button (click)="Click()">Click me!!!</button>
 <h1>_____________________________________________</h1>
 <h2> API from reqres.io</h2>
-<app-detail page="1" [ngStyle]="{  'display' : chosenPage === 1 ? 'block' : 'none'}"></app-detail>
-<app-detail page="2" [ngStyle]="{  'display' : chosenPage === 2 ? 'block' : 'none'}"></app-detail>
+<ul>
+  <li *ngFor="let page of pages">
+<app-detail page="{{page}}" [ngStyle]="{  'display' : chosenPage === page ? 'block' : 'none'}"></app-detail>
+  </li>
+<!-- <app-detail page="2" [ngStyle]="{  'display' : chosenPage === 2 ? 'block' : 'none'}"></app-detail>
 <app-detail page="3" [ngStyle]="{  'display' : chosenPage === 3 ? 'block' : 'none'}"></app-detail>
-<app-detail page="4" [ngStyle]="{  'display' : chosenPage === 4 ? 'block' : 'none'}"></app-detail>
+<app-detail page="4" [ngStyle]="{  'display' : chosenPage === 4 ? 'block' : 'none'}"></app-detail> -->
+</ul>
 <ul><span><• </span>
   <li *ngFor="let page of pages" (click)="showPage(page)">{{page}} • </li>
   <span> ...............></span>
 </ul>
-<app-detail></app-detail>
+<!-- <div>{{max_pages.total_pages}} </div> -->
