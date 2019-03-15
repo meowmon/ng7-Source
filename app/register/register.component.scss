@@ -1,13 +1,18 @@
 div.name{
+    width: 100%;
+    height: 20%;
     label{
-
         width: 40%;
         .form-control{
-            display: inline;
+            display: inline-block;
+            margin-top: 0px;
+            position: relative;
         }
     }
 }
 div.username{
+    width: 100%;
+    height: 20%;
     label{
 
         width: 400px;
@@ -17,16 +22,57 @@ div.username{
     }
 }
 div.password{
+    width: 100%;
+    height: 20%;
     label{
         width: 400px;
+    }
+    img{
+        margin-left: 15px;
+        width: 24px;
+        height: 24px;
     }
 }
 .registerForm{
     border-radius: 5px;
     background-color: #ffffff;
     padding: 20px;
-    height: 630px;
+    height: auto;
     width: 730px;
     margin: auto;
     border-style: outset;
 }
+.tp-radio-group {
+    display: inline;
+    flex-direction: column;
+ }
+ .tp-radio-button {
+    margin: 5px;
+
+ }
+ :host ::ng-deep .mat-radio-container{
+    height: 16px;
+    width: 16px;
+  }
+  :host ::ng-deep .mat-radio-outer-circle{
+    height: 16px;
+    width: 16px;
+  }
+  :host ::ng-deep .mat-radio-inner-circle{
+    height: 16px;
+    width: 16px;
+  }
+  :host ::ng-deep .mat-radio-button .mat-radio-ripple{
+    height: 32px; //double of your required circle radius
+    width: 32px;  //double of your required circle radius
+    left: calc(50% - 16px); //'16px'-same as your required circle radius
+    top: calc(50% - 16px); //'16px'-same as your required circle radius
+  }
+  .test-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+ }
+ .test-display {
+    width: 100%;
+ }

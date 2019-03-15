@@ -1,53 +1,84 @@
-<div class="registerForm">
-  <form [formGroup]="accountForm" (ngSubmit)="accountSubmit()">
-    <h2 style="text-align: center"> Register Form </h2>
+<div class="registerForm" >
+  <h2 style="text-align: center"> Register Form </h2>
+  <form [formGroup]="accountForm" [style.display]=" infoInput ? 'none' : 'block'"  (ngSubmit)="accountSubmit()">
+    <strong>Account Information:</strong>
     <div class="name">
         <label>
-          <span> Firstname:</span>
-            <input type="text" formControlName="firstName" class="form-control">
-            <div *ngIf="submitted && accountForm.controls.firstName.errors" class="error">
-              <div *ngIf="accountForm.controls.firstName.errors.required">Your firstName is required</div>
+            Firstname:
+            <input type="text" formControlName="firstName" class="form-control" [(ngModel)]="firstname" name="firstname">
+            <div *ngIf="accountSubmitted && accountForm.controls.firstName.errors" class="error">
+              <div *ngIf="accountForm.controls.firstName.errors.required" style="color:red">Your firstName is required</div>
             </div>
         </label>
-        
+
         <label style="margin-left:30px">
-            <span>Lastname:</span>  
-            <input type ="text" formControlName="lastName" class="form-control" >
-            <div *ngIf="submitted && accountForm.controls.lastName.errors" class="error">
-              <div *ngIf="accountForm.controls.lastName.errors.required">A lastName is required</div>
+            Lastname:  
+            <input type="text" formControlName="lastName" class="form-control" [(ngModel)]="lastname" name="lastname">
+             <div *ngIf="accountSubmitted && accountForm.controls.lastName.errors" class="error">
+              <div *ngIf="accountForm.controls.lastName.errors.required" style="color:red">A lastName is required</div>
             </div>  
         </label>
     </div>
     <div class="username">
         <label>
-          <span> Username:</span>
+        Username:
             <input type="text" formControlName="userName" class="form-control">
-            <div *ngIf="submitted && accountForm.controls.userName.errors" class="error">
-              <div *ngIf="accountForm.controls.userName.errors.required">Your Username is required</div>
-            </div>
-          </label>
+            <div *ngIf="accountSubmitted && accountForm.controls.userName.errors" class="error">
+              <div *ngIf="accountForm.controls.userName.errors.required" style="color:red">Your Username is required</div>
+             </div>
+          </label> 
     </div>
-    <div class="password">
+    <div class="password" >
         <label>
           <span> Password:</span>
-            <input type="password" formControlName="password" class="form-control">
-            <div *ngIf="submitted && accountForm.controls.password.errors" class="error">
-              <div *ngIf="accountForm.controls.password.errors.required">You need a password</div>
+            <input [type]=" visible ? 'text' : 'password'" formControlName="password" class="form-control">
+            <div *ngIf="accountSubmitted && accountForm.controls.password.errors" class="error">
+              <div *ngIf="accountForm.controls.password.errors.required" style="color:red" >You need a password</div>
             </div>
           </label>
+          <img src="../../assets/download.png" [style.display]=" visible ? 'inline' : 'none'" (click)="setUnvisible()">
+          <img src="../../assets/glyph-set-two-18-512.png" [style.display]= "visible ? 'none' : 'inline'" (click)="setVisible()">
           <br>
           <label>
               <span> Confirm Password:</span>
-                <input type="password" formControlName="cfpassword" class="form-control">
-                <div *ngIf="submitted && (accountForm.controls.password.value !==  accountForm.controls.cfpassword.value)" class="error">
-                  <div *ngIf="accountForm.controls.cfpassword.errors.required">Confirm password missmatch password</div>
+                <input [type]="visible ? 'text' : 'password' " formControlName="cfpassword" class="form-control">
+                <div *ngIf="accountSubmitted && accountForm.controls.password.value !=  accountForm.controls.cfpassword.value && accountForm.controls.errors" class="error">
+                  <div *ngIf="accountForm.controls.cfpassword.errors.required" style="color:red">Confirm password missmatch password</div>
                 </div>
-              </label>
+            </label>
     </div>
     <input type="submit" value="register" class="btn-btn-primary">
 
   </form>
-  <!-- <form [formGroup]="infoForm" [style.display]=" accountSubmited ? 'block' : 'none' " (ngSubmit)="infoSubmit()">
+  <form [formGroup]="infoForm" [style.display]=" infoInput ? 'block' : 'none' " (ngSubmit)="infoSubmit()">
+    <strong>User Information:</strong> {{firstname}} {{lastname}}
+    <div>Date of birth:
+        <mat-form-field> 
+            <input matInput formControlName="birthday" [matDatepicker] = "picker" placeholder = "Choose a date">
+            <mat-datepicker-toggle matSuffix [for] = "picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+         </mat-form-field>
+    </div>
+    <div>Gender: 
+        <mat-radio-group class = "tp-radio-group">
+            <mat-radio-button class = "tp-radio-button"
+               *ngFor = "let gender of genders" [value] = "gender">
+               {{gender}}
+            </mat-radio-button>
+         </mat-radio-group>
+    </div>
+    <div>Country name:
+        <form class="test-form">
+            <mat-form-field class="test-display">
+              <input type="text"  placeholder="Country's name" aria-label="NameCode" matInput [formControl] = "myControl" [matAutocomplete] = "auto">
+              <mat-autocomplete #auto = "matAutocomplete">
+                <mat-option *ngFor = "let name of countrysName" [value]="name.value">
+                    {{name.display}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </form>
+    </div>
     
-  </form> -->
+  </form>
 </div>
