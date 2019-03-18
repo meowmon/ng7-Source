@@ -7,7 +7,7 @@
             Firstname:
             <input type="text" formControlName="firstName" class="form-control" [(ngModel)]="firstname" name="firstname">
             <div *ngIf="accountSubmitted && accountForm.controls.firstName.errors" class="error">
-              <div *ngIf="accountForm.controls.firstName.errors.required" style="color:red">Your firstName is required</div>
+              <div *ngIf="accountForm.controls.firstName.errors.required" style="color:red">Your first Name is required</div>
             </div>
         </label>
 
@@ -15,7 +15,7 @@
             Lastname:  
             <input type="text" formControlName="lastName" class="form-control" [(ngModel)]="lastname" name="lastname">
              <div *ngIf="accountSubmitted && accountForm.controls.lastName.errors" class="error">
-              <div *ngIf="accountForm.controls.lastName.errors.required" style="color:red">A lastName is required</div>
+              <div *ngIf="accountForm.controls.lastName.errors.required" style="color:red">A last Name is required</div>
             </div>  
         </label>
     </div>
@@ -47,38 +47,65 @@
                 </div>
             </label>
     </div>
+    <br>
+    <hr>
     <input type="submit" value="register" class="btn-btn-primary">
 
   </form>
   <form [formGroup]="infoForm" [style.display]=" infoInput ? 'block' : 'none' " (ngSubmit)="infoSubmit()">
     <strong>User Information:</strong> {{firstname}} {{lastname}}
+    <div class="phone" > Phone number:
+      <label>
+          <input type="text" formControlName="phone" class="form-control">
+          
+      </label> <div *ngIf="infoSubmitted && infoForm.controls.phone.errors" class="error">
+        <div *ngIf="infoForm.controls.phone.errors.required" style="color:red">Your Phone number is required</div>
+       </div>
+  </div>
     <div>Date of birth:
         <mat-form-field> 
             <input matInput formControlName="birthday" [matDatepicker] = "picker" placeholder = "Choose a date">
             <mat-datepicker-toggle matSuffix [for] = "picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
+            
          </mat-form-field>
+         <div *ngIf="infoSubmitted && infoForm.controls.birthday.errors" class="error">
+          <div *ngIf="infoForm.controls.birthday.errors.required" style="color:red">Your birthday is required</div>
+         </div>
     </div>
     <div>Gender: 
-        <mat-radio-group class = "tp-radio-group">
+        <mat-radio-group class = "tp-radio-group" formControlName="gender">
             <mat-radio-button class = "tp-radio-button"
                *ngFor = "let gender of genders" [value] = "gender">
                {{gender}}
             </mat-radio-button>
+            <mat-datepicker #picker></mat-datepicker>
          </mat-radio-group>
     </div>
     <div>Country name:
         <form class="test-form">
             <mat-form-field class="test-display">
-              <input type="text"  placeholder="Country's name" aria-label="NameCode" matInput [formControl] = "myControl" [matAutocomplete] = "auto">
+              <input type="text"  placeholder="Country's name" aria-label="NameCode" matInput [formControl] ="myControl" [matAutocomplete] = "auto">
               <mat-autocomplete #auto = "matAutocomplete">
-                <mat-option *ngFor = "let name of countrysName" [value]="name.value">
-                    {{name.display}}
+                <mat-option *ngFor = "let countryName of countryNames" [value]="countryName.value">
+                    {{countryName.display}}
                 </mat-option>
               </mat-autocomplete>
             </mat-form-field>
           </form>
     </div>
-    
+    <div class="email" > Email:
+      <label>
+          <input type="text" formControlName="email" class="form-control">
+          
+      </label> 
+      <div *ngIf="infoSubmitted && infoForm.controls.email.errors" class="error">
+        <div *ngIf="infoForm.controls.email.errors.required" style="color:red">Your email is required</div>
+       </div>
+  </div>
+  <section class = "tp-section">
+    <mat-checkbox class = "tp-margin" [ngModelOptions]="{standalone: true}" [(ngModel)] = "acceptted">I read and accept with Privacy and Term of Service.</mat-checkbox>
+ </section>
+  <input type="submit" value="register" class="btn-btn-primary" [disabled] = "!acceptted">
   </form>
 </div>

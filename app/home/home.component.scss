@@ -9,7 +9,33 @@
     color:yellow;
 }
 ul{
+    margin: auto;
+    width: 50%;
+    border-radius: 5px;
     li{
         display: inline;
+    }
+}
+ul.page{
+    margin: auto;
+    background-color: aqua;
+    li{
+        border: 1px solid black;
+        display: inline-block;
+        text-align: center;
+        margin-left:10px;
+        margin-top: 2px;
+        margin-bottom: 2px;
+        width: 26px;
+        background-color: grey;
+        padding-top: auto;
+        padding-bottom: auto;
+    }
+    .selected{
+        background-color: rgb(9, 129, 241);
+    }
+    :hover{
+    background-color: rgb(78, 44, 44);
+
     }
 }

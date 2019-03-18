@@ -19,6 +19,8 @@
   home works!
 </h1>
 <button (click)="Click()">Click me!!!</button>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5JdgHMjN-Hc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <h1>_____________________________________________</h1>
 <h2> API from reqres.io</h2>
 <ul>
@@ -29,8 +31,7 @@
 <app-detail page="3" [ngStyle]="{  'display' : chosenPage === 3 ? 'block' : 'none'}"></app-detail>
 <app-detail page="4" [ngStyle]="{  'display' : chosenPage === 4 ? 'block' : 'none'}"></app-detail> -->
 </ul>
-<ul><span><• </span>
-  <li *ngFor="let page of pages" (click)="showPage(page)">{{page}} • </li>
-  <span> ...............></span>
+<ul class="page rounded-pill">
+  <li *ngFor="let page of pages" [ngClass]="{ 'selected':chosenPage === page }" class="rounded-circle" (click)="showPage(page)"><strong>{{page}}</strong></li> 
 </ul>
 <!-- <div>{{max_pages.total_pages}} </div> -->

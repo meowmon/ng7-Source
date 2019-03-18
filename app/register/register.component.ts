@@ -10,20 +10,24 @@ export class RegisterComponent implements OnInit {
   accountForm : FormGroup;
   infoForm : FormGroup;
   accountSubmitted=  false;
-  infoInput=  true;
-  genders: string[] = ["Male", "Female"];
+  infoSubmitted=false;
+  infoInput=  false;
+  genders: string[] = ["Male", "Female", "Others"];
   myControl = new FormControl();
+  acceptted=false;
   countryNames;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder) {
+    this.loadName();
+  }
 
   ngOnInit() {
   this.accountForm = this.formBuilder.group(
     { 
-      firstName: ['',Validators.required],
+      firstName: ['',Validators.compose([Validators.required,Validators.pattern('^(?=.*[a-zA-Z])[a-zA-Z]+$')])],
       lastName:  ['',Validators.required],
       userName:  ['',Validators.required],
-      password:  ['',Validators.compose([ Validators.required, Validators.minLength(6), Validators.maxLength(36)])],
+      password:  ['',Validators.compose([ Validators.required, Validators.minLength(6), Validators.maxLength(36),Validators.pattern('^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]+$')])],
       cfpassword:['',Validators.required],
     });
   this.infoForm = this.formBuilder.group({
@@ -31,13 +35,12 @@ export class RegisterComponent implements OnInit {
     gender: new FormControl(this.genders[0], Validators.required),
     country: ['', Validators.required],
     email:['', Validators.required],
-    phonenumber:['', Validators.required],
-
+    phone:['', Validators.compose([Validators.required, Validators.maxLength(10),Validators.minLength(10)])]
   });
   }
   get account() { return this.accountForm.controls  }
   get info(){ return this.infoForm.controls  }
-  accountSubmit(){
+  accountSubmit(){    
     console.log(this.account.firstName.value +"  "+ this.account.userName.value +"  "+ this.account.password.value);
     this.accountSubmitted = true;
     if(this.account.firstName.value != "" && this.account.userName.value != "" && this.account.password.value != "" && (this.account.password.value == this.account.cfpassword.value) && this.accountSubmitted)
@@ -50,6 +53,15 @@ export class RegisterComponent implements OnInit {
       return;
   }
   }
+  infoSubmit(){
+    this.infoSubmitted = true;
+    console.log(
+      this.info.birthday.value +" "+ this.info.gender.value+" "+this.info.country.value+" "+this.info.email.value+" "+this.info.phone.value
+    )
+    if (this.infoForm.invalid)
+      return;
+  }
+
   visible = false;
   setUnvisible(){
     this.visible = false
@@ -58,12 +70,12 @@ export class RegisterComponent implements OnInit {
     this.visible = true
   }
   loadName(){
-    var countrysName= 'america, britain, china,czech	,england	, holland	,hong-kong	,new-zealand	,puerto-rico	,slovak	,south africa	,south korea	,south-africa	,south-korea	KOR	ko-KR,trinidad & tobago	, united-kingdom, united-states, vietnam ';
+    var allCountry= 'america, britain, china,czech	,england	, holland, hong-kong, new-zealand, puerto-rico, slovak, south africa, south korea, south-africa, south-korea, trinidad & tobago, united-kingdom, united-states, vietnam ';
     
-    this.countryNames = countrysName.split(/, +/g).map( function (name){
+    this.countryNames = allCountry.split(/, +/g).map( function (country){
       return {
-        value: name.toLowerCase(),
-        display : name
+        value: country.toLowerCase(),
+        display : country
       };
     });
   }

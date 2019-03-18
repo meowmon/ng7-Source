@@ -1,8 +1,8 @@
 
-<div class="loginForm">
+<div class="loginForm mx-auto">
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
-    <h5 >Login Form</h5>
+    <h5 >Login</h5>
 
     <label>
       Username:<br>
@@ -14,13 +14,16 @@
   
     <label>
       Password:<br>
-      <textarea formControlName="password" class="form-control"></textarea>
+      <input formControlName="password" class="form-control " type="password">
       <div *ngIf="submitted && loginForm.controls.password.errors" class="error">
         <div *ngIf="loginForm.controls.password.errors.required">A password is required</div>
       </div>  
     </label>
-    <br>
-    <input type="submit" value="login" class="btn-btn-primary">
+    <hr>
+    <section class = "tp-section">
+      <mat-checkbox class = "tp-margin" [(ngModel)] = "acceptted" [ngModelOptions]="{standalone: true}" >Remember me? </mat-checkbox>
+   </section>
+    <input type="submit" value="login" class="btn btn-outline-secondary">
     <span *ngIf="showRegister"> <a [routerLink]="['/register']" class="btn btn-link">Register</a></span>
   </form>
 </div>
