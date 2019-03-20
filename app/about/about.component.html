@@ -23,12 +23,12 @@
       <td> Delete</td>
     </tr>
 
-    <tr *ngFor="let player of players" (click)="Clicked(player)">
+    <tr *ngFor="let player of players ;index as i" (click)="Clicked(player)">
       <td [ngClass]="{
         'id': true,
         'selected' : player === chosenOne 
       
-      }">{{player.id}}</td>
+      }">{{i+1}}</td>
       <td [ngClass]="{
         'name': true,
         'selected' : player === chosenOne 

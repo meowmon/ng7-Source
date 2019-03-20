@@ -34,7 +34,9 @@ export class AboutComponent implements OnInit {
     this.chosen = true;
   }
   add(){
-  this.players.push({id: this.maxid++,name:this.player.name.value, age: this.player.age.value})
+  if(this.player.name.value != ""){
+   this.players.push({id: this.maxid++,name:this.player.name.value, age: this.player.age.value})
+  }
    if (this.newPlayerForm.invalid) {
       return;
     }

@@ -16,6 +16,8 @@ import { FormTestComponent } from './form-test/form-test.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { DetailComponent } from './detail/detail.component';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +42,8 @@ import { DetailComponent } from './detail/detail.component';
     MatCheckboxModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatRadioModule
+    MatRadioModule,
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [],
   bootstrap: [AppComponent]
