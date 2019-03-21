@@ -1,14 +1,9 @@
-<header>
-  <div class="container">
-<a routerLink="/" class="logo">{{appTitle}}</a>
-    <nav>
-      <ul>
-        <li><a routerLink="/">Home</a></li>
-        <li><a routerLink="/about">About</a></li>
-        <li><a routerLink="/contact">Contact us</a></li>
-        <li><a routerLink="/formTest">Forms</a></li>
-        <li><a routerLink="/login">Login</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+<nav class="navbar navbar-light bg-info">
+  <span class="navbar-brand mb-0 h1 text-light" routerLink="/"><i class="fas fa-american-sign-language-interpreting"></i>{{appTitle}}</span>
+  <span class="mr-auto"></span>
+    <button class="btn btn-info" routerLink="/">Home</button>
+    <button class="btn btn-info" routerLink="/about">About</button>
+    <button class="btn btn-info" routerLink="/contact">Contact us</button>
+    <button class="btn btn-info" routerLink="/formTest">Forms</button>
+    <button class="btn btn-info" routerLink="/login">Login</button>
+</nav>

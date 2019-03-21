@@ -1,51 +1,52 @@
-<div class="registerForm" >
+<div class="registerForm mx-auto" >
   <h2 style="text-align: center"> Register Form </h2>
-  <form [formGroup]="accountForm" [style.display]=" infoInput ? 'none' : 'block'"  (ngSubmit)="accountSubmit()">
+  <form [formGroup]="accountForm" [style.display]=" infoInput ? 'none' : 'block'" class="card-body card no-padding"  (ngSubmit)="accountSubmit()">
     <strong>Account Information:</strong>
-    <div class="name">
-        <label>
+    <div class="form-group row no-margin">
+        <div class="col-md-5">
             Firstname:
-            <input type="text" formControlName="firstName" class="form-control" [(ngModel)]="firstname" name="firstname">
+            <input type="text" formControlName="firstName" class="form-control " [(ngModel)]="firstname" name="firstname">
             <div *ngIf="accountSubmitted && accountForm.controls.firstName.errors" class="error">
               <div *ngIf="accountForm.controls.firstName.errors.required" style="color:red">Your first Name is required</div>
             </div>
-        </label>
+        </div>
 
-        <label style="margin-left:30px">
+        <div style="margin-left:30px" class="col-md-5">
             Lastname:  
             <input type="text" formControlName="lastName" class="form-control" [(ngModel)]="lastname" name="lastname">
              <div *ngIf="accountSubmitted && accountForm.controls.lastName.errors" class="error">
               <div *ngIf="accountForm.controls.lastName.errors.required" style="color:red">A last Name is required</div>
             </div>  
-        </label>
+        </div>
     </div>
-    <div class="username">
-        <label>
+    <div class="form-group row no-margin">
+        <div class=" col-md-6 ">
         Username:
             <input type="text" formControlName="userName" class="form-control">
             <div *ngIf="accountSubmitted && accountForm.controls.userName.errors" class="error">
               <div *ngIf="accountForm.controls.userName.errors.required" style="color:red">Your Username is required</div>
              </div>
-          </label> 
+          </div> 
     </div>
-    <div class="password" >
-        <label>
+    <div class="form-group row no-margin" >
+        <div class=" col-md-6 ">
           <span> Password:</span>
             <input [type]=" visible ? 'text' : 'password'" formControlName="password" class="form-control">
+            <img class="visible-icon"   src="../../assets/download.png" [style.display]=" visible ? 'inline' : 'none'" (click)="setUnvisible()">
+            <img class="visible-icon"   src="../../assets/glyph-set-two-18-512.png" [style.display]= "visible ? 'none' : 'inline'" (click)="setVisible()">
             <div *ngIf="accountSubmitted && accountForm.controls.password.errors" class="error">
               <div *ngIf="accountForm.controls.password.errors.required" style="color:red" >You need a password</div>
             </div>
-          </label>
-          <img src="../../assets/download.png" [style.display]=" visible ? 'inline' : 'none'" (click)="setUnvisible()">
-          <img src="../../assets/glyph-set-two-18-512.png" [style.display]= "visible ? 'none' : 'inline'" (click)="setVisible()">
-          <br>
-          <label>
-              <span> Confirm Password:</span>
+        </div>
+            
+            <br>
+        <div class=" col-md-6 ">
+              <span> Confirm Password:</span> 
                 <input [type]="visible ? 'text' : 'password' " formControlName="cfpassword" class="form-control">
                 <div *ngIf="accountSubmitted && accountForm.controls.password.value !=  accountForm.controls.cfpassword.value && accountForm.controls.errors" class="error">
                   <div *ngIf="accountForm.controls.cfpassword.errors.required" style="color:red">Confirm password missmatch password</div>
                 </div>
-            </label>
+        </div>
     </div>
     <br>
     <hr>
@@ -55,10 +56,10 @@
   <form [formGroup]="infoForm" [style.display]=" infoInput ? 'block' : 'none' " (ngSubmit)="infoSubmit()">
     <strong>User Information:</strong> {{firstname}} {{lastname}}
     <div class="phone" > Phone number:
-      <label>
+      <div>
           <input type="text" formControlName="phone" class="form-control">
           
-      </label> <div *ngIf="infoSubmitted && infoForm.controls.phone.errors" class="error">
+      </div> <div *ngIf="infoSubmitted && infoForm.controls.phone.errors" class="error">
         <div *ngIf="infoForm.controls.phone.errors.required" style="color:red">Your Phone number is required</div>
        </div>
   </div>
@@ -85,7 +86,7 @@
     <div>Country name:
         <form class="test-form">
             <mat-form-field class="test-display">
-              <input type="text"  placeholder="Country's name" aria-label="NameCode" matInput [formControl] ="myControl" [matAutocomplete] = "auto">
+              <input type="text"  placeholder="Country's name" aria-div="NameCode" matInput [formControl] ="myControl" [matAutocomplete] = "auto">
               <mat-autocomplete #auto = "matAutocomplete">
                 <mat-option *ngFor = "let countryName of countryNames" [value]="countryName.value">
                     {{countryName.display}}
@@ -95,10 +96,10 @@
           </form>
     </div>
     <div class="email" > Email:
-      <label>
+      <div>
           <input type="text" formControlName="email" class="form-control">
           
-      </label> 
+      </div> 
       <div *ngIf="infoSubmitted && infoForm.controls.email.errors" class="error">
         <div *ngIf="infoForm.controls.email.errors.required" style="color:red">Your email is required</div>
        </div>

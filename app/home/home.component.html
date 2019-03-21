@@ -1,37 +1,13 @@
-<p [class.blue]="h1Style">
-  home works!
-</p>
-<h1 [ngClass]="{
-  'yellow' : h1Style,
-  'large' : !h1Style
-
-}">
-  home works!
-</h1>
-<h1 [ngStyle]="{
-  'color' : h1Style ? 'gray' : 'black',
-  'font-size' : !h1Style ? '1em'  :  '3em'
-
-}">
-  home works!
-</h1>
-<h1 [style.color]="h1Style ? 'gray' : 'black'">
-  home works!
-</h1>
-<button (click)="Click()">Click me!!!</button>
-<br>
-
-<hr>
-<h2> API from reqres.io</h2>
-<ul>
-  <li *ngFor="let page of pages">
-<app-detail page="{{page}}" [ngStyle]="{  'display' : chosenPage === page ? 'block' : 'none'}"></app-detail>
-  </li>
-<!-- <app-detail page="2" [ngStyle]="{  'display' : chosenPage === 2 ? 'block' : 'none'}"></app-detail>
-<app-detail page="3" [ngStyle]="{  'display' : chosenPage === 3 ? 'block' : 'none'}"></app-detail>
-<app-detail page="4" [ngStyle]="{  'display' : chosenPage === 4 ? 'block' : 'none'}"></app-detail> -->
-</ul>
-<ul class="page rounded-pill">
-  <li *ngFor="let page of pages" [ngClass]="{ 'selected':chosenPage === page }" class="rounded-circle" (click)="showPage(page)"><strong>{{page}}</strong></li> 
-</ul>
-<!-- <div>{{max_pages.total_pages}} </div> -->
+<div class="container-fluid text-center pb-5">
+  <h1> API from reqres.io </h1>
+      <div *ngFor="let page of pages" class="tp-block--flex">
+        <app-detail page="{{page}}" [ngStyle]="{ 'display' : chosenPage === page ? 'block' : 'none'}"></app-detail><br>
+     </div>
+    <div class="mx-auto rounded-pill bg-light">
+      <ul class="list-group list-group-horizontal">
+          <li *ngFor="let page of pages" [ngClass]="{ 'active':chosenPage === page }" class="rounded-circle list-group-item" (click)="showPage(page)"><strong>{{page}}</strong></li> 
+      </ul>
+      
+    </div>
+    <!-- <div>{{max_pages.total_pages}} </div> -->
+</div>
