@@ -1,58 +1,63 @@
 <h3>Pirate Team Members:</h3>
-<form [formGroup]="newPlayerForm" (ngSubmit)="add()">
-    <label>Name:
-      <input type = "text" formControlName="name" placeholder="name"/>
-    </label>
-    <label>Age:
-        <input type = "text" placeholder="age" formControlName ="age"/>
-      </label>
-    <button type="submit">Add</button>
+<form [formGroup]="newPlayerForm" (ngSubmit)="add()" class="form-inline">
+    <div class="form-group mb-2">
+      <input type = "text" class="form-control" formControlName="name" placeholder="Name"/>
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+        <input type = "text" class="form-control" placeholder="Age" formControlName ="age"/>
+    </div>
+    <div class="mb-2">
+        <button class="btn btn-outline-success sticky-bottom" type="submit">Add</button>
+    </div>
     </form>
-<form>
-  <table>
-    <tr>
-      <td class="id">
-        <strong>Id</strong>
-      </td>
-      <td class="name">
-          <strong>Name</strong>
-      </td>
-      <td class="age">
-          <strong>Age</strong>
-      </td>
-      <td> Delete</td>
-    </tr>
 
-    <tr *ngFor="let player of players ;index as i" (click)="Clicked(player)">
-      <td [ngClass]="{
+<form>
+  <div class="container border border-warning">
+    <div class="row">
+      <div class="col">
+        <strong>Id</strong>
+      </div>
+      <div class="col">
+          <strong>Name</strong>
+      </div>
+      <div class="col">
+          <strong>Age</strong>
+      </div>
+      <div class="col"> Delete</div>
+    </div>
+
+    <div *ngFor="let player of players ;index as i" (click)="Clicked(player)" class="row">
+      <div [ngClass]="{
         'id': true,
         'selected' : player === chosenOne 
       
-      }">{{i+1}}</td>
-      <td [ngClass]="{
+      }"    class="col">{{i+1}}</div>
+      <div [ngClass]="{
         'name': true,
         'selected' : player === chosenOne 
       
-      }">{{player.name}}</td>
-      <td [ngClass]="{
+      }"
+            class="col">{{player.name}}</div>
+      <div [ngClass]="{
         'age': true,
         'selected' : player === chosenOne 
       
-      }">{{player.age}}</td>
-      <td style="width:100px"><button (click)="Delete(player)">Delete</button></td>
-    </tr>
-  </table>
+      }"
+            class="col">{{player.age}}</div>
+      <div style="width:100px" class="col"><button class="btn btn-danger" (click)="Delete(player)">Delete</button></div>
+    </div>
+  </div>
   <div *ngIf="gothim">
   <strong>
     The chosen one is: {{chosenOne.name | uppercase}}
   </strong>
   <form>Wanna update info?
-      <label>Name:
+      <div>Name:
         <input [(ngModel)]="chosenOne.name" placeholder="name" name="name"/>
-      </label>
-      <label>Age:
+      </div>
+      <div>Age:
           <input [(ngModel)]="chosenOne.age" placeholder="age" name ="age"/>
-        </label>
+        </div>
       </form>
   </div>
 </form>

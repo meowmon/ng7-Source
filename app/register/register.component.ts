@@ -11,7 +11,7 @@ export class RegisterComponent implements OnInit {
   infoForm : FormGroup;
   accountSubmitted=  false;
   infoSubmitted=false;
-  infoInput=  false;
+  infoInput=  true;
   genders: string[] = ["Male", "Female", "Others"];
   myControl = new FormControl();
   acceptted=false;
@@ -70,7 +70,7 @@ export class RegisterComponent implements OnInit {
     this.visible = true
   }
   loadName(){
-    var allCountry= 'america, britain, china,czech	,england	, holland, hong-kong, new-zealand, puerto-rico, slovak, south africa, south korea, south-africa, south-korea, trinidad & tobago, united-kingdom, united-states, vietnam ';
+    var allCountry= 'america, britain, china, czech, england	, holland, hong-kong, new-zealand, puerto-rico, slovak, south africa, south korea, south-africa, south-korea, trinidad & tobago, united-kingdom, united-states, vietnam ';
     
     this.countryNames = allCountry.split(/, +/g).map( function (country){
       return {

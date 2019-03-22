@@ -1,12 +1,19 @@
 
 li.rounded-circle{
+        size: 1px;
         text-align: center;
-        margin: 5px 10px;
+        margin: 5px 10px 5px 10px;
         background-color: rgb(218, 186, 186);
 }
 li.rounded-circle:hover{
     background-color: rgb(221, 61, 61);
 }
-li:active{
+li.rounded-circle:active{
     color: red;
+}
+div.rounded-pill{
+    width: fit-content;
+}
+li.list-group-item{
+    padding: 0.2rem 0.7rem;
 }

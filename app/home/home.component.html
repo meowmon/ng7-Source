@@ -1,13 +1,12 @@
-<div class="container-fluid text-center pb-5">
+<div class="container text-center">
   <h1> API from reqres.io </h1>
-      <div *ngFor="let page of pages" class="tp-block--flex">
-        <app-detail page="{{page}}" [ngStyle]="{ 'display' : chosenPage === page ? 'block' : 'none'}"></app-detail><br>
+      <div *ngFor="let page of pages" class="">
+        <app-detail page="{{page}}" [ngStyle]="{ 'display' : chosenPage === page ? 'grid' : 'none'}"></app-detail>
      </div>
-    <div class="mx-auto rounded-pill bg-light">
+    <div class="mx-auto rounded-pill bg-light container">
       <ul class="list-group list-group-horizontal">
           <li *ngFor="let page of pages" [ngClass]="{ 'active':chosenPage === page }" class="rounded-circle list-group-item" (click)="showPage(page)"><strong>{{page}}</strong></li> 
       </ul>
       
     </div>
-    <!-- <div>{{max_pages.total_pages}} </div> -->
 </div>

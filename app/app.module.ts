@@ -12,7 +12,6 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
 import { from } from 'rxjs';
-import { FormTestComponent } from './form-test/form-test.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { DetailComponent } from './detail/detail.component';
@@ -25,7 +24,6 @@ import { environment } from '../environments/environment';
     AboutComponent,
     ContactComponent,
     HomeComponent,
-    FormTestComponent,
     LoginComponent,
     RegisterComponent,
     DetailComponent,

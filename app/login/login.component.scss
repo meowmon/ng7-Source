@@ -3,6 +3,7 @@
     padding: 20px;
     height: auto;
     width: 330px;
+    margin-top: 3em;
     border-style: outset;
 }
 .tp-margin {
@@ -10,12 +11,8 @@
  }
  .tp-section {
     display: block ;
-    align-content: left;
-    align-items: left;
     height: 20px;
  } 
  .btn-outline-secondary, .btn-link{
-    margin-left: auto;
-    margin-right: auto;
     display: block;
 }
