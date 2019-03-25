@@ -11,7 +11,7 @@ export class RegisterComponent implements OnInit {
   infoForm : FormGroup;
   accountSubmitted=  false;
   infoSubmitted=false;
-  infoInput=  true;
+  infoInput=  false;
   genders: string[] = ["Male", "Female", "Others"];
   myControl = new FormControl();
   acceptted=false;

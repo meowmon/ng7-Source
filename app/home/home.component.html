@@ -5,8 +5,16 @@
      </div>
     <div class="mx-auto rounded-pill bg-light container">
       <ul class="list-group list-group-horizontal">
-          <li *ngFor="let page of pages" [ngClass]="{ 'active':chosenPage === page }" class="rounded-circle list-group-item" (click)="showPage(page)"><strong>{{page}}</strong></li> 
+          <li  *ngFor="let page of pages" [ngClass]="{ 'active':chosenPage === page }" class="rounded-circle list-group-item" (click)="showPage(page)"><strong >{{page}}</strong></li> 
       </ul>
       
     </div>
+    <nav>
+      <li *ngFor="let page of pages"> <button class="btn btn-info" [routerLink]="['/detail', page]">{{page}}</button></li>
+       
+    </nav>
+    <section>
+      <router-outlet></router-outlet>
+    </section>
+    
 </div>

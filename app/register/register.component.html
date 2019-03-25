@@ -29,7 +29,10 @@
           </div> 
     </div>
     <div class="form-group row no-margin" >
-        <div class=" col-md-6 ">
+        
+          
+          
+        <!-- <div class="col-md-6 ">
           <span> Password:</span>
             <input [type]=" visible ? 'text' : 'password'" formControlName="password" class="form-control">
             <img class="visible-icon"   src="../../assets/download.png" [style.display]=" visible ? 'inline' : 'none'" (click)="setUnvisible()">
@@ -37,13 +40,27 @@
             <div *ngIf="accountSubmitted && accountForm.controls.password.errors" class="error">
               <div *ngIf="accountForm.controls.password.errors.required" style="color:red" >You need a password</div>
             </div>
-        </div>
+        </div> -->
+        <div class="col-md-6">
+            <span> Password: </span>
+            <div class="input-group">
+            <input [type]=" visible ? 'text' : 'password'" formControlName="password" class="form-control border-right-0" aria-label="Password" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+              <span class="input-group-text border-left-0 bg-white" id="basic-addon2">
+                <img class="visible-icon"   src="../../assets/download.png" [style.display]=" visible ? 'inline' : 'none'" (click)="setUnvisible()">
+                <img class="visible-icon"   src="../../assets/glyph-set-two-18-512.png" [style.display]= "visible ? 'none' : 'inline'" (click)="setVisible()"></span>
+            </div></div>
+            <div *ngIf="accountSubmitted && accountForm.controls.password.errors" class="error">
+                <div *ngIf="accountForm.controls.password.errors.required" style="color:red" >You need a password</div>
+              </div>
+              
+          </div>
             
             <br>
         <div class=" col-md-6 ">
               <span> Confirm Password:</span> 
                 <input [type]="visible ? 'text' : 'password' " formControlName="cfpassword" class="form-control">
-                <div *ngIf="accountSubmitted && accountForm.controls.password.value !=  accountForm.controls.cfpassword.value && accountForm.controls.errors" class="error">
+                <div *ngIf="accountForm.controls.password.value !=  accountForm.controls.cfpassword.value " class="error">
                   <div *ngIf="accountForm.controls.cfpassword.errors.required" style="color:red">Confirm password missmatch password</div>
                 </div>
         </div>

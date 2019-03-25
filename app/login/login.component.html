@@ -8,7 +8,7 @@
       Username:<br>
       <input type="text" formControlName="username" class="form-control">
       <div *ngIf="submitted && loginForm.controls.username.errors" class="error">
-        <div *ngIf="loginForm.controls.username.errors.required">Your username is required</div>
+        <div *ngIf="loginForm.controls.username.errors.required" style="color:red">Your username is required</div>
       </div>
     </div>
   
@@ -16,7 +16,7 @@
       Password:<br>
       <input formControlName="password" class="form-control " type="password">
       <div *ngIf="submitted && loginForm.controls.password.errors" class="error">
-        <div *ngIf="loginForm.controls.password.errors.required">A password is required</div>
+        <div *ngIf="loginForm.controls.password.errors.required" style="color:red">A password is required</div>
       </div>  
     </div>
     </div>
@@ -28,7 +28,7 @@
   </div>
   <div class="form-group row">
   <div class="col-md-2">
-    <input type="submit" value="login" class="btn btn-outline-secondary">
+    <input type="submit" value="Login" class="btn btn-outline-secondary">
   </div>
   <div class="col-md-3">
     <span *ngIf="showRegister"> <a [routerLink]="['/register']" class="btn btn-link">Register</a></span>
