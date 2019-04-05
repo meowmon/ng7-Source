@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import * as d3 from "d3";
+export * from "d3-scale";
+export * from "d3-axis"
 
 @Component({
   selector: 'app-about',
@@ -7,48 +9,62 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit {
-  players: Player[] = [
-  { id: 1, name: 'Zoro', age: 24 },
-  { id: 2, name: 'Nico Robin' , age: 23 },
-  { id: 3, name: 'Luffy' , age: 12},
-  { id: 4, name: 'Ussop' , age: 34},
-  { id: 5, name: 'Sanji' ,age:23},
-  ];
-  maxid = 5;  
-  newPlayerForm: FormGroup;
-
-  constructor(private formBuilder:FormBuilder) { }
-  chosen= false;
+  deg: number =0;
+  radius=10;
+  input = [ 100, 200 , 300, 400, 500, 600, 700, 800, 1000];
+  constructor() { }
+  
   ngOnInit() {
-    this.newPlayerForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      age: ['', Validators.required]
-    });
+   
   }
-  get player() {return this.newPlayerForm.controls}
-  chosenOne: Player;
-  gothim=false;
-  Clicked(player : Player){
-    this.chosenOne = player;
-    this.gothim=true;
-    this.chosen = true;
+  ngAfterContentInit(){
+    d3.select("#list").selectAll("li").data([10, 20, 30, 25, 15]);
+    d3.select("p").style("color","red");
+    
   }
-  add(){
-  if(this.player.name.value != ""){
-   this.players.push({id: this.maxid++,name:this.player.name.value, age: this.player.age.value})
+  clicked(event: any){
+    console.log(event);
+    d3.select(event.target).append('circle').attr('cx',event.x).attr('cy',event.y).attr('r',this.radius).attr('fill','blue');
+    console.log(event.x +" "+ event.y)
+    
   }
-   if (this.newPlayerForm.invalid) {
-      return;
-    }
+  clickMe(){
+    d3.select(".container").transition().style("background-color", "aqua").duration(3000);
+    var width = 1000;
+    var height = 500;
+    var widthScale = d3.scaleLinear().domain([1200,0]).range([0,width]);
+    var heightScale = d3.scaleLinear().domain([1200,0]).range([0,height]);
+    var colorScale = d3.scaleLinear().domain([0,1200]).range(["red","violet"]);
+    var svg = d3.select("#svgcontainer")
+     .append("svg")
+     .attr("width", width)
+     .attr("height", height)
+     .style("margin" , 50)
+     .append('g');
+    //  .attr('transform', 'translate('+ 500 +','+ 1200 +') rotate(180)');
+    var xAxis = d3.axisRight().scale(heightScale);
+    var yAxis = d3.axisBottom().scale(widthScale);
+     
+    // svg.append("line")
+    //  .attr("x1", 100)
+    //  .attr("y1", 100)
+    //  .attr("x2", 500) 
+    //  .attr("y2", 250)
+    //  .style("stroke", "rgb(255,0,0)")
+    //  .style("stroke-width", 2);
+    var bar = svg.selectAll('rect')
+                  .data(this.input)
+                  .enter()
+                    .append('rect')
+                    .attr('height', function(d){return height - heightScale(d);}).transition().duration(3000)
+                    .attr('width', 30)
+                    // .attr('transform',  'translate('+ 500 +','+ 1200 +') rotate(180)')
+                    .style('fill', function(d){return colorScale(d);})
+                    .attr('x', function(d,i){
+                      return(50+i*50)
+                    })
+                    .attr('y',function(d){return height-(height-heightScale(d));});
+    svg.append('g').call(xAxis).attr('transform','rotate(0)');
+    // svg.append('g').call(yAxis).attr('transform','rotate(0)');
   }
-  Delete (player: Player){
-    this.players.splice(player.id-1,1)
-  }
-}
-
-
-export class Player {
-  id: number;
-  name: string;
-  age: number;
 }

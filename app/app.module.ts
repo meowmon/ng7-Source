@@ -17,6 +17,7 @@ import { RegisterComponent } from './register/register.component';
 import { DetailComponent } from './detail/detail.component';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
+import * as d3 from "d3";
 @NgModule({
   declarations: [
     AppComponent,
